@@ -47,15 +47,3 @@ public class DiagonalTree {
 		diagonal(root.right, level, list);
 	}
 }
-
-class Node {
-	
-	char value;
-	Node left;
-	Node right;
-
-	public Node(char value) {
-		super();
-		this.value = value;
-	}
-}
