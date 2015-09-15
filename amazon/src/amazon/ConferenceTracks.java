@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,7 +19,6 @@ public class ConferenceTracks {
 	
 	public static void main(String[] args) throws Exception {
 		readInput();
-		Collections.sort(talks, Collections.reverseOrder());
 
 		while (!talks.isEmpty()) {
 			List<Talk> track = new LinkedList<Talk>();
@@ -55,18 +53,12 @@ public class ConferenceTracks {
 		int currentDuration = 0;
 		
 		while (!talks.isEmpty() && currentDuration < duration) {
-			int lastPos = talks.size() - 1;
 			Talk first = talks.get(0);
-			Talk last = talks.get(lastPos);
 			
 			if (currentDuration + first.getTime() <= duration) {
 				currentDuration += first.getTime();
 				localTalks.add(first);
 				talks.remove(0);
-			} else if (currentDuration + last.getTime() <= duration) {
-				currentDuration += last.getTime();
-				localTalks.add(last);
-				talks.remove(lastPos);
 			} else {
 				break;
 			}
